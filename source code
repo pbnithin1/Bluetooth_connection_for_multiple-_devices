@@ -1,0 +1,94 @@
+import java.util.*;
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(" Enter number of devices available:");
+        Scanner sc = new Scanner(System.in);
+        int no_of_dev = sc.nextInt();
+        System.out.println("select available devices");
+        String arr[] = {"0.nokia", "1.Iphone", "2.samsung", "3.JBL", "4.linux"};
+        //print available devices
+        for (String s : arr) {
+            System.out.println(s);
+        }
+        //Scanner sc=new Scanner(System.in);
+        //int device=sc.nextInt();
+        //Scanner scanner = new Scanner(System.in);
+        //String b[];
+
+        Scanner avail = new Scanner(System.in);
+        int[] devices = new int[no_of_dev];
+        for (int i = 0; i < no_of_dev; i++) {
+            devices[i] = avail.nextInt();
+        }
+        System.out.println(Arrays.toString(devices));
+        int i = 0;
+        System.out.println(" selected devices are:");
+        while (i < no_of_dev) {
+            System.out.println(arr[devices[i]]);
+            i++;
+        }
+
+        /*while (scanner.hasNextLine())
+        {
+            String[] tokens = scanner.nextLine().split("\\s");
+            System.out.println(Arrays.toString(tokens));
+            b = new String[tokens.length];
+            b = tokens;
+            b[0]++
+        }
+
+        scanner.close();*/
+        // most frequently connected device
+        //int[] countArray={};
+        //List<Integer> count = Arrays.asList(countArray);
+        List<Integer> list = new ArrayList<Integer>();
+        //List<Integer> count = new ArrayList<Integer>(Arrays.asList(countArray));
+        //System.out.println("count:");
+        //add one more element to list
+        int x = 0;
+        while (x < 5) {
+            list.add(0);
+            x++;
+        }
+        //print the arraylist
+        for (Integer val : list) {
+            System.out.print(val + " ");
+        }
+        //connection of devices: highest frequency and latest connected
+        Stack<String> stack = new Stack<String>();
+        int number=0;
+        int j = 0;
+        if (list.get(devices[j]) == 0) {
+            stack.push(arr[devices[j]]);
+            System.out.println(arr[devices[j]] + "connected");
+            number++;
+            list.set(devices[j], number);
+        }else{
+            int m;
+            for(m=0;m<no_of_dev;m++) {
+                if(stack.peek()==arr[devices[m]]) {
+                    System.out.println(arr[devices[m]] + " connected");
+                    number++;
+                    list.set(devices[m], number);
+                }
+                else{
+
+                    int p;
+                      // Initialize maximum element
+                    int max = list.get(devices[0]);
+
+                    // Traverse array elements from second and
+                    // compare every element with current max
+                    for (p = 1; p < 5; p++)
+                        if (list.get(devices[p]) > max)
+                            max = list.get(devices[p]);
+                    if(list.get(devices[m])==max){
+                        System.out.println(arr[devices[m]]+"connected");
+                    }
+                }
+            }
+        }
+    }
+}
